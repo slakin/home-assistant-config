@@ -1,0 +1,53 @@
+default_view:
+#home:
+  view: yes
+  entities:
+    - group.living_room
+    - group.bed_room
+    - switch.plug_158d000128a4e8
+    - media_player.mpd
+    - media_player.samsung_tv_remote
+    - media_player.onkyo_txnr555
+    - group.all_devices
+    - group.outdoors
+    - group.sensors
+    - scene.turn_off
+    - group.digital_strip
+System:
+  view: yes
+  entities:
+    - group.all_automations
+    - group.server
+    - group.night_light
+    - group.battery
+Living room:
+  entities:
+    - light.yeelight_bulb
+    - light.gateway_light_286c0785aec9
+    - scene.romantic_living_room
+    - scene.movies
+    - scene.bright
+    - scene.dog_light
+Bed room:
+  entities:
+    - light.yeelight_strip
+    - scene.white_light
+    - scene.romantic
+Sensors:
+  entities:
+    - sensor.door
+    - binary_sensor.motion_sensor_158d00012652ca   
+    - sensor.temperature_158d0001573fb6
+    - sensor.humidity_158d0001573fb6
+    - sensor.illumination_286c0785aec9
+Night light:
+  entities:
+    - input_slider.night_light_timer_on
+    - input_slider.night_light_timer_off
+Battery:
+  entities:
+    - sensor.battery_cube
+    - sensor.battery_temp
+    - sensor.battery_door
+    - sensor.battery_motion
+    

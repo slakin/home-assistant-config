@@ -1,0 +1,44 @@
+- name: White light
+  entities:
+    light.yeelight_strip:
+      state: on
+      color_temp: 200
+      brightness: 20
+- name: Romantic
+  entities:
+    light.yeelight_strip:
+      state: on
+      rgb_color: [255,157,204]
+      brightness: 20
+- name: Romantic living room
+  entities:
+    light.yeelight_bulb:
+      state: on
+      rgb_color: [255,157,204]
+      brightness: 150
+    light.gateway_light_286c0785aec9:
+      state: on
+      rgb_color: [255,157,204]
+      brightness: 150
+- name: Movies
+  entities:
+    light.yeelight_bulb:
+      state: on
+      rgb_color: [20,20,50]
+      brightness: 130
+- name: Turn off
+  entities:
+    group.all_lights:
+      state: off
+- name: Bright
+  entities:
+    light.yeelight_bulb:
+      state: on
+      color_temp: 210
+      brightness: 255
+- name: Dog light
+  entities:
+    light.yeelight_bulb:
+      state: on
+      color_temp: 180
+      brightness: 180

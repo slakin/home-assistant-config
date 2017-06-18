@@ -1,0 +1,8 @@
+- platform: yeelight
+  devices:
+    192.168.0.16:
+      name: Yeelight bulb
+      transition: 1000
+    192.168.0.15:
+      name: Yeelight strip
+      transition: 1000

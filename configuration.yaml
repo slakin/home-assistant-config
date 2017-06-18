@@ -1,0 +1,110 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: !secret time_zone
+  customize: !include customize.yaml
+  packages:  !include_dir_named packages
+
+frontend:
+
+http:
+  api_password: !secret api_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  login_attempts_threshold: 10
+
+notify:
+  - name: html5
+    platform: html5
+    gcm_api_key: !secret gcm_api_key
+    gcm_sender_id: !secret gcm_sender_id
+
+updater:
+
+config:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+  exclude:
+    domains:
+      - automation
+      - scene
+      - updater
+      - group
+      - input_slider
+    entities:
+      - sensor.yr_symbol
+      - binary_sensor.door_window_sensor_158d00012a87e4
+
+recorder:
+  purge_days: 14
+  exclude:
+    domains:
+      - automation
+      - scene
+      - updater
+      - group
+      - input_slider
+    entities:
+      - sensor.yr_symbol
+      - binary_sensor.door_window_sensor_158d00012a87e4
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  platform: google
+
+automation: !include automations.yaml
+
+group: !include groups.yaml
+
+scene: !include scenes.yaml
+
+light: !include lights.yaml
+
+sensor: !include sensor.yaml
+
+input_slider: !include input_slider.yaml
+
+xiaomi:
+ gateways:
+   - sid:
+     key: !secret xiaomi_key
+
+device_tracker:
+  - platform: nmap_tracker
+    home_interval: 5
+    track_new_devices: true
+    hosts: 
+      - 192.168.0.18
+      - 192.168.0.21
+
+media_player:
+  - platform: mpd
+    host: 127.0.0.1
+    port: 6600
+  - platform: samsungtv
+    host: 192.168.0.113
+    port: 8001
+  - platform: onkyo
+    host: 192.168.0.115
+    name: Onkyo TX-NR555
+    sources: 
+      game: "PS 4"
+      network: "Network"
+      strm-box: "Mopidy"
+      pc: "PC"
+
+

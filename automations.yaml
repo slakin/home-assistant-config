@@ -1,0 +1,112 @@
+- id: toogle_audio
+  alias: Toogle audio
+  hide_entity: False
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001182dd3
+      action_type: free_fall
+  action:
+    - service: media_player.toggle
+      entity_id: media_player.mpd
+- id: volume
+  alias: Volume
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+        entity_id: binary_sensor.cube_158d0001182dd3
+        action_type: rotate
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.mpd
+        volume_level: >
+                      {% set state = states.media_player.mpd.attributes.volume_level + (trigger.event.data.action_value|float)/90 -%}
+                      {%-  if state > 1 -%}
+                         {%- set state  = 1 -%}
+                      {%-  elif state < 0 -%}
+                         {%- set state  = 0 -%}
+                      {%- endif %}
+                      {{ state }}
+- id: next_track
+  alias: Next track
+  trigger:
+   - platform: event
+     event_type: cube_action
+     event_data:
+       entity_id: binary_sensor.cube_158d0001182dd3
+       action_type: shake_air
+  condition:
+    condition: state
+    entity_id: media_player.mpd
+    state: 'playing'
+  action:
+    - service: media_player.media_next_track
+      entity_id: media_player.mpd
+- id: strip_animation_speed
+  alias: "Strip Animation Speed"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: input_slider.strip_animation_speed
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: "home/strip/set"
+        payload: '{"transition":{{ trigger.to_state.state | int }}}'
+- id: toogle_light_when_swith_clicked
+  alias: Toogle light when swith clicked
+  hide_entity: False
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d00012d9f39
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.yeelight_strip
+- id: Turn_on_light_when_sun_sets
+  alias: Turn on light when sun sets
+  initial_state: False
+  hide_entity: False
+  trigger:
+    platform: sun
+    event: sunset
+  action:
+    service: scene.turn_on
+    entity_id: scene.dog_light
+- id: night_light_on
+  alias: Night light on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00012652ca
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.yeelight_bulb
+      state: 'off'
+    - condition: template
+      value_template: '{{(now().hour >= (states.input_slider.night_light_timer_on.state  | round(0))  and 
+now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_slider.night_light_timer_off.state  | round(0)))}}'
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_286c0785aec9
+      data:
+        rgb_color: [241,65,0]
+- id: night_light_off
+  alias: Night light off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00012652ca
+    to: 'off'
+  condition:
+    - condition: template
+      value_template: '{{(now().hour >= (states.input_slider.night_light_timer_on.state  | round(0))  and 
+now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_slider.night_light_timer_off.state  | round(0)))}}'
+  action:
+    - service: light.turn_off
+      entity_id: light.gateway_light_286c0785aec9

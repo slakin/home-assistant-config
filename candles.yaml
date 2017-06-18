@@ -1,0 +1,16 @@
+group:
+  candles:
+    view: no
+    entities:
+      - light.candle1
+      - light.candle2
+      - light.candle3  
+light:
+  - platform: mipow
+    devices:
+      F1:D2:4B:0D:AC:E6:
+        name: candle1
+      F3:2C:4B:0D:AC:E6:
+        name: candle2
+      F3:4F:4B:0D:AC:E6:
+        name: candle3

@@ -1,0 +1,33 @@
+  binary_sensor.switch_158d00012d9f39:
+    friendly_name: Switch
+  binary_sensor.motion_sensor_158d00012652ca:
+    friendly_name: Motion Sensor
+  binary_sensor.door_window_sensor_158d00012a87e4:
+    friendly_name: Door Sensor
+  light.gateway_light_286c0785aec9:
+    friendly_name: Gateway Light
+  switch.plug_158d000128a4e8:
+    friendly_name: Plug
+  binary_sensor.cube_158d0001182dd3:
+    friendly_name: Cube
+  light.yeelight_strip:
+    friendly_name: Bed lights
+  light.yeelight_bulb:
+    friendly_name: Lamp
+  group.all_automations:
+    friendly_name: Automation
+    hidden: false
+  group.all_switches:
+    friendly_name: Switches
+    hidden: false
+  group.all_lights:
+    friendly_name: Lights
+    hidden: false
+  sensor.humidity_158d0001573fb6:
+    friendly_name: Humidity
+  sensor.illumination_286c0785aec9:
+    friendly_name: Illumination
+  sensor.temperature_158d0001573fb6:
+    friendly_name: Temperature
+  scene.romantic_living_room:
+    friendly_name: Romantic

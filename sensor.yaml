@@ -1,0 +1,67 @@
+- platform: template
+  sensors:
+    door:
+      value_template: "{% if is_state('binary_sensor.door_window_sensor_158d00012a87e4', 'on') %}Open{% else %}Closed{% endif %}"
+      icon_template: "mdi:glassdoor"
+      friendly_name: Door
+    battery_cube:
+      unit_of_measurement: '%'
+      friendly_name: 'Cube'
+      value_template: >-
+            {{states.binary_sensor.cube_158d0001182dd3.attributes.battery_level}}
+      icon_template: >-
+            {%- if is_state("sensor.battery_cube", "unknown") %}
+            mdi:battery-unknown
+            {%- elif  states.binary_sensor.cube_158d0001182dd3.attributes.battery_level <= 5 %}
+            mdi:battery-outline
+            {%- elif states.binary_sensor.cube_158d0001182dd3.attributes.battery_level >= 80 %}
+            mdi:battery
+            {% else %}
+            mdi:battery-{{(states.binary_sensor.cube_158d0001182dd3.attributes.battery_level|float / 10)|round*10}}
+            {%- endif %}
+    battery_door:
+      unit_of_measurement: '%'
+      friendly_name: 'Door sensor'
+      value_template: >-
+            {{states.binary_sensor.door_window_sensor_158d00012a87e4.attributes.battery_level}}
+      icon_template: >-
+            {%- if is_state("sensor.battery_door", "unknown") %}
+            mdi:battery-unknown
+            {%- elif  states.binary_sensor.door_window_sensor_158d00012a87e4.attributes.battery_level <= 5 %}
+            mdi:battery-outline
+            {%- elif states.binary_sensor.door_window_sensor_158d00012a87e4.attributes.battery_level >= 80 %}
+            mdi:battery
+            {% else %}
+            mdi:battery-{{(states.binary_sensor.door_window_sensor_158d00012a87e4.attributes.battery_level|float / 10)|round*10}}
+            {%- endif %}      
+    battery_motion:
+      unit_of_measurement: '%'
+      friendly_name: 'Motion sensor'
+      value_template: >-
+            {{states.binary_sensor.motion_sensor_158d00012652ca.attributes.battery_level}}
+      icon_template: >-
+            {%- if is_state("sensor.battery_motion", "unknown") %}
+            mdi:battery-unknown
+            {%- elif  states.binary_sensor.motion_sensor_158d00012652ca.attributes.battery_level <= 5 %}
+            mdi:battery-outline
+            {%- elif states.binary_sensor.motion_sensor_158d00012652ca.attributes.battery_level >= 80 %}
+            mdi:battery
+            {% else %}
+            mdi:battery-{{(states.binary_sensor.motion_sensor_158d00012652ca.attributes.battery_level|float / 10)|round*10}}
+            {%- endif %}    
+    battery_temp:
+      unit_of_measurement: '%'
+      friendly_name: 'Temperature sensor'
+      value_template: >-
+            {{states.sensor.temperature_158d0001573fb6.attributes.battery_level}}                        
+      icon_template: >-
+            {%- if is_state("sensor.battery_temp", "unknown") %}
+            mdi:battery-unknown
+            {%- elif  states.sensor.temperature_158d0001573fb6.attributes.battery_level <= 5 %}
+            mdi:battery-outline
+            {%- elif states.sensor.temperature_158d0001573fb6.attributes.battery_level >= 80 %}
+            mdi:battery
+            {% else %}
+            mdi:battery-{{(states.sensor.temperature_158d0001573fb6.attributes.battery_level|float / 10)|round*10}}
+            {%- endif %}            
+- platform: yr
