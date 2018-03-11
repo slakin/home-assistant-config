@@ -51,7 +51,7 @@
   hide_entity: False
   trigger:
     - platform: state
-      entity_id: input_slider.strip_animation_speed
+      entity_id: input_number.strip_animation_speed
   action:
     - service: mqtt.publish
       data_template:
@@ -68,7 +68,7 @@
       click_type: single
   action:
     service: light.toggle
-    entity_id: light.yeelight_strip
+    entity_id: light.yeelight_bulb
 - id: Turn_on_light_when_sun_sets
   alias: Turn on light when sun sets
   initial_state: False
@@ -90,8 +90,8 @@
       entity_id: light.yeelight_bulb
       state: 'off'
     - condition: template
-      value_template: '{{(now().hour >= (states.input_slider.night_light_timer_on.state  | round(0))  and 
-now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_slider.night_light_timer_off.state  | round(0)))}}'
+      value_template: '{{(now().hour >= (states.input_number.night_light_timer_on.state  | round(0))  and 
+now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_number.night_light_timer_off.state  | round(0)))}}'
   action:
     - service: light.turn_on
       entity_id: light.gateway_light_286c0785aec9
@@ -105,8 +105,8 @@ now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_slider.nigh
     to: 'off'
   condition:
     - condition: template
-      value_template: '{{(now().hour >= (states.input_slider.night_light_timer_on.state  | round(0))  and 
-now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_slider.night_light_timer_off.state  | round(0)))}}'
+      value_template: '{{(now().hour >= (states.input_number.night_light_timer_on.state  | round(0))  and 
+now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_number.night_light_timer_off.state  | round(0)))}}'
   action:
     - service: light.turn_off
       entity_id: light.gateway_light_286c0785aec9

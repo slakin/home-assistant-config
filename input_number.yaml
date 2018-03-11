@@ -1,0 +1,14 @@
+night_light_timer_on:
+  name: Night light on
+  icon: mdi:timer
+  initial: 23
+  min: 19
+  max: 23
+  step: 1
+night_light_timer_off:
+  name: Night light off
+  icon: mdi:timer
+  initial: 6
+  min: 5
+  max: 10
+  step: 1

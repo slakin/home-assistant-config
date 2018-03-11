@@ -1,0 +1,56 @@
+light:
+  - platform: mqtt_json
+    name: "Digital Strip"
+    state_topic: "home/strip"
+    command_topic: "home/strip/set"
+    effect: true
+    effect_list:
+      - bpm
+      - candy cane  
+      - confetti  
+      - cyclon rainbow  
+      - dots  
+      - fire  
+      - glitter  
+      - juggle  
+      - lightning
+      - noise  
+      - police all  
+      - police one  
+      - rainbow  
+      - rainbow with glitter  
+      - ripple  
+      - sinelon  
+      - solid  
+      - twinkle  
+    brightness: true
+    flash: true
+    rgb: true
+    optimistic: false
+    qos: 0
+
+mqtt:
+  broker: 192.168.0.19
+  port: 1883
+  client_id: home-assistant-1
+  keepalive: 60
+  username: xfer
+  password: 56445644
+  protocol: 3.1
+
+input_number:
+  strip_animation_speed:
+    name: Strip Animation Speed
+    initial: 150
+    min: 1
+    max: 150
+    step: 10
+    
+group:
+  Digital strip:
+    control: hidden
+    entities:
+      - light.digital_strip
+      - input_number.strip_animation_speed
+      - automation.strip_animation_speed
+

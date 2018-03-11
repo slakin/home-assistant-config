@@ -14,6 +14,8 @@
     friendly_name: Bed lights
   light.yeelight_bulb:
     friendly_name: Lamp
+  light.yeelight_bulb_2:
+    friendly_name: Dog Lamp    
   group.all_automations:
     friendly_name: Automation
     hidden: false

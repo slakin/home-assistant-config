@@ -8,11 +8,11 @@ default_view:
     - media_player.mpd
     - media_player.samsung_tv_remote
     - media_player.onkyo_txnr555
+    - media_player.plex_web_chrome
     - group.all_devices
     - group.outdoors
     - group.sensors
     - scene.turn_off
-    - group.digital_strip
 System:
   view: yes
   entities:
@@ -24,6 +24,7 @@ Living room:
   entities:
     - light.yeelight_bulb
     - light.gateway_light_286c0785aec9
+    - light.yeelight_bulb_2
     - scene.romantic_living_room
     - scene.movies
     - scene.bright
@@ -42,8 +43,8 @@ Sensors:
     - sensor.illumination_286c0785aec9
 Night light:
   entities:
-    - input_slider.night_light_timer_on
-    - input_slider.night_light_timer_off
+    - input_number.night_light_timer_on
+    - input_number.night_light_timer_off
 Battery:
   entities:
     - sensor.battery_cube
