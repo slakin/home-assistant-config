@@ -1,0 +1,72 @@
+title: Home
+views:
+  - title: "Дом"
+    cards:
+      - type: entities
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
+      - type: glance
+        title: Свет
+        entities:
+          - light.yeelight_bulb
+          - light.yeelight_strip
+          - light.yeelight_bulb_2
+          - light.gateway_light_286c0785aec9
+          - scene.blackout
+      - type: entities
+        title: "Коридор"
+        entities:
+          - light.yeelight_bulb_2
+          - scene.dog_light
+      - type: media-control
+        entity: media_player.samsung_tv
+      - type: media-control
+        entity: media_player.onkyo_txnr555
+      - type: media-control
+        entity: media_player.mibox3 
+      - type: media-control
+        entity: media_player.onkyo
+      - type: entities
+        title: "Сцены"
+        entities:
+          - switch.disco
+          - scene.white_light
+          - scene.romantic
+          - scene.movies
+          - scene.bright
+      - type: media-control
+        entity: media_player.google_home_mini
+      - type: weather-forecast
+        entity: weather.dark_sky
+      - type: entities
+        title: "Сенсоры"
+        entities:
+          - sensor.door
+          - binary_sensor.motion_sensor_158d00012652ca
+          - sensor.temperature_158d0001573fb6
+          - sensor.humidity_158d0001573fb6
+          - sensor.illumination_286c0785aec9
+      - type: picture-glance
+        image: https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+        title: Спальня
+        entities:
+          - scene.romantic
+          - light.yeelight_bulb
+          - light.gateway_light_286c0785aec9
+          - light.yeelight_strip
+
+  - title: "Система"
+    cards:
+      - type: entities
+        title: Night light
+        entities:
+          - input_number.night_light_timer_on
+          - input_number.night_light_timer_off
+      - type: glance
+        title: Батарея датчиков
+        entities:
+          - sensor.battery_cube
+          - sensor.battery_temp
+          - sensor.battery_door
+          - sensor.battery_motion
+

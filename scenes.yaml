@@ -26,7 +26,7 @@
       state: on
       rgb_color: [20,20,50]
       brightness: 130
-- name: Turn off
+- name: Blackout
   entities:
     group.all_lights:
       state: off
@@ -38,7 +38,33 @@
       brightness: 255
 - name: Dog light
   entities:
-    light.yeelight_bulb:
+    light.yeelight_bulb_2:
       state: on
       color_temp: 180
       brightness: 180
+- name: Disco on
+  entities:
+    light.yeelight_bulb_2:
+      state: on
+      effect: "Disco"
+    light.yeelight_bulb:
+      state: on
+      effect: "Disco"
+    light.yeelight_strip:
+      state: on
+      effect: "Disco"
+
+- name: Disco off
+  entities:
+    light.yeelight_bulb_2:
+      state: on
+      color_temp: 210
+      brightness: 255
+    light.yeelight_bulb:
+      state: on
+      color_temp: 210
+      brightness: 255
+    light.yeelight_strip:
+      state: on
+      color_temp: 210
+      brightness: 255

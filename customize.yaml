@@ -1,35 +1,98 @@
-  binary_sensor.switch_158d00012d9f39:
-    friendly_name: Switch
-  binary_sensor.motion_sensor_158d00012652ca:
-    friendly_name: Motion Sensor
-  binary_sensor.door_window_sensor_158d00012a87e4:
-    friendly_name: Door Sensor
-  light.gateway_light_286c0785aec9:
-    friendly_name: Gateway Light
-  switch.plug_158d000128a4e8:
-    friendly_name: Plug
-  binary_sensor.cube_158d0001182dd3:
-    friendly_name: Cube
-  light.yeelight_strip:
-    friendly_name: Bed lights
-  light.yeelight_bulb:
-    friendly_name: Lamp
-  light.yeelight_bulb_2:
-    friendly_name: Dog Lamp    
-  group.all_automations:
-    friendly_name: Automation
-    hidden: false
-  group.all_switches:
-    friendly_name: Switches
-    hidden: false
-  group.all_lights:
-    friendly_name: Lights
-    hidden: false
-  sensor.humidity_158d0001573fb6:
-    friendly_name: Humidity
-  sensor.illumination_286c0785aec9:
-    friendly_name: Illumination
-  sensor.temperature_158d0001573fb6:
-    friendly_name: Temperature
-  scene.romantic_living_room:
-    friendly_name: Romantic
+binary_sensor.switch_158d00012d9f39:
+  friendly_name: Выключатель
+binary_sensor.motion_sensor_158d00012652ca:
+  friendly_name: Датчик движения
+binary_sensor.door_window_sensor_158d00012a87e4:
+  friendly_name: Датчик двери
+binary_sensor.cube_158d0001182dd3:
+  friendly_name: Кубик
+light.yeelight_strip:
+  friendly_name: Кровать
+light.yeelight_bulb:
+  friendly_name: Спальня
+light.yeelight_bulb_2:
+  friendly_name: Коридор
+light.gateway_light_286c0785aec9:
+  friendly_name: Свет шлюза
+sensor.humidity_158d0001573fb6:
+  friendly_name: Влажность
+sensor.illumination_286c0785aec9:
+  friendly_name: Освещенность
+sensor.temperature_158d0001573fb6:
+  friendly_name: Температура
+media_player.onkyo:
+  friendly_name: Onkyo TX-NR555 (Cast)
+switch.plug_158d000128a4e8:
+  friendly_name: Розетка
+group.all_automations:
+  friendly_name: Автоматизация
+  hidden: false
+group.all_switches:
+  friendly_name: Переключатели
+  hidden: false
+group.all_lights:
+  friendly_name: Свет
+  hidden: false
+group.all_vacuum_cleaners:
+  hidden: false
+  friendly_name: Пылесос
+group.battery:
+  friendly_name: Батарея
+group.bed_room:
+  friendly_name: Спальня
+group.default_view:
+  friendly_name: Дом
+group.living_room:
+  friendly_name: Зал
+group.sensors:
+  friendly_name: Сенсоры
+group.system:
+  friendly_name: Система
+group.outdoors:
+  friendly_name: Улица
+scene.white_light:
+  friendly_name: Белый свет
+scene.romantic_living_room:
+  friendly_name: Романтика
+scene.blackout:
+  friendly_name: Выключить всё
+scene.romantic:
+  friendly_name: Романтика
+scene.movies:
+  friendly_name: Кино
+scene.dog_light:
+  friendly_name: Включить свет для собаки
+scene.bright:
+  friendly_name: Яркий свет
+automation.next_track:
+  friendly_name: Потряси куб для следующего трека
+automation.night_light_off:
+  friendly_name: Автовыключение ночного освещения
+automation.night_light_on:
+  friendly_name: Автовключение ночного освещения
+automation.toogle_audio:
+  friendly_name: Включить музыку кубиком
+automation.toogle_light_when_swith_clicked:
+  friendly_name: Выключатель для люстры
+automation.turn_on_light_when_sun_sets:
+  friendly_name: Включить свет собаке на закате
+automation.volume:
+  friendly_name: Регулировка звука кубиком
+automation.turn_off_light_when_we_come:
+  friendly_name: Выключить свет собаки, когда приходим домой
+sensor.battery_cube:
+  friendly_name: Кубика
+climate.xiaomi_climate:
+  hidden: true
+vacuum.xiaomi_vacuum_cleaner:
+  friendly_name: Робот пылесос
+switch.disco:
+  friendly_name: Дискотека
+sensor.battery_temp:
+  friendly_name: Температуры
+sensor.battery_door:
+  friendly_name: Открытия
+sensor.battery_motion:
+  friendly_name: Движения
+automation.turn_off_dog_light_when_we_come_home:
+  friendly_name: Выключить свет собаке по приходу домой

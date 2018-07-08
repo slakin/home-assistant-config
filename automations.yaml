@@ -9,7 +9,7 @@
       action_type: free_fall
   action:
     - service: media_player.toggle
-      entity_id: media_player.mpd
+      entity_id: media_player.onkyo_txnr555
 - id: volume
   alias: Volume
   trigger:
@@ -21,9 +21,9 @@
   action:
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.mpd
+        entity_id: media_player.onkyo_txnr555
         volume_level: >
-                      {% set state = states.media_player.mpd.attributes.volume_level + (trigger.event.data.action_value|float)/90 -%}
+                      {% set state = states.media_player.onkyo_txnr555.attributes.volume_level + (trigger.event.data.action_value|float)/90 -%}
                       {%-  if state > 1 -%}
                          {%- set state  = 1 -%}
                       {%-  elif state < 0 -%}
@@ -45,18 +45,6 @@
   action:
     - service: media_player.media_next_track
       entity_id: media_player.mpd
-- id: strip_animation_speed
-  alias: "Strip Animation Speed"
-  initial_state: True
-  hide_entity: False
-  trigger:
-    - platform: state
-      entity_id: input_number.strip_animation_speed
-  action:
-    - service: mqtt.publish
-      data_template:
-        topic: "home/strip/set"
-        payload: '{"transition":{{ trigger.to_state.state | int }}}'
 - id: toogle_light_when_swith_clicked
   alias: Toogle light when swith clicked
   hide_entity: False
@@ -71,7 +59,7 @@
     entity_id: light.yeelight_bulb
 - id: Turn_on_light_when_sun_sets
   alias: Turn on light when sun sets
-  initial_state: False
+  initial_state: True
   hide_entity: False
   trigger:
     platform: sun
@@ -110,3 +98,16 @@ now().hour <= 23) or (now().hour >= 0 and now().hour < (states.input_number.nigh
   action:
     - service: light.turn_off
       entity_id: light.gateway_light_286c0785aec9
+- id: turn_off_light_when_we_come
+  alias: Turn off dog light when we come home
+  condition:
+    - condition: state
+      entity_id: light.yeelight_bulb_2
+      state: 'on'
+  trigger:
+    platform: state
+    entity_id: device_tracker.742344e80911
+    to: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: light.yeelight_bulb_2

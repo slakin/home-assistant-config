@@ -1,39 +1,38 @@
 default_view:
-#home:
   view: yes
   entities:
+    - group.all_vacuum_cleaners
     - group.living_room
     - group.bed_room
     - switch.plug_158d000128a4e8
-    - media_player.mpd
-    - media_player.samsung_tv_remote
-    - media_player.onkyo_txnr555
-    - media_player.plex_web_chrome
+    - media_player.google_home_mini
     - group.all_devices
     - group.outdoors
     - group.sensors
-    - scene.turn_off
 System:
   view: yes
   entities:
     - group.all_automations
-    - group.server
     - group.night_light
     - group.battery
 Living room:
   entities:
-    - light.yeelight_bulb
-    - light.gateway_light_286c0785aec9
     - light.yeelight_bulb_2
-    - scene.romantic_living_room
-    - scene.movies
-    - scene.bright
+    - media_player.samsung_tv
+    - media_player.onkyo_txnr555
+    - media_player.mibox3
+    - media_player.onkyo
     - scene.dog_light
 Bed room:
   entities:
+    - light.yeelight_bulb
+    - light.gateway_light_286c0785aec9
     - light.yeelight_strip
+    - switch.disco
     - scene.white_light
     - scene.romantic
+    - scene.movies
+    - scene.bright
 Sensors:
   entities:
     - sensor.door

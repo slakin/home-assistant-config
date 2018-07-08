@@ -6,7 +6,6 @@ homeassistant:
   unit_system: metric
   time_zone: !secret time_zone
   customize: !include customize.yaml
-  packages:  !include_dir_named packages
 
 frontend:
 
@@ -27,10 +26,50 @@ updater:
 
 config:
 
+google_assistant:
+  project_id: assistant-for-ha
+  client_id: ZwF6BqrlWxtDNHDSN4GjbbZ5rz8YNXYHM7LLKQ0P8hj77mBeQAxRfaQQJ0AiMEVe47I9w7ay0uVHlW7h
+  access_token: MJSJmNbfb4YKVAzJsYb4Xq0edyU324ngm3Lv3CnnssVo7NpC3BQ6OfzpPILpwWtP1YHe0fnBCQoAPEDh
+  agent_user_id: ruslan
+  api_key: AIzaSyDjbmv-HNugbdnae_x40AgxuQGSFAPES6k
+  exposed_domains:
+    - light
+    - media_player
+    - script
+    - climate
+  entity_config:
+    light.yeelight_bulb:
+      aliases:
+        - main
+      room: "Bed room"
+    light.yeelight_bulb_2:
+      aliases:
+        - dog
+      room: "Living room"
+    light.yeelight_strip:
+      aliases:
+        - romantic
+      room: "Bed room"
+    light.gateway_light_286c0785aec9:
+      aliases:
+        - spot
+      room: "Bed room"
+    media_player.onkyo:
+      expose: false
+    media_player.google_home_mini:
+      expose: false
+    
+
+
+
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
 discovery:
+  ignore:
+    - yeelight
+    - samsung_tv
+    - plex_mediaserver
             
 # Enables support for tracking state changes over time.
 history:
@@ -94,20 +133,52 @@ device_tracker:
     hosts: 
       - 192.168.0.18
       - 192.168.0.21
+      - 192.168.0.130
 
 media_player:
-  - platform: mpd
-    host: 127.0.0.1
-    port: 6600
   - platform: samsungtv
-    host: 192.168.0.113
+    host: 192.168.0.133
+    mac: 50:85:69:65:37:42
+    name: Samsung TV
   - platform: onkyo
     host: 192.168.0.115
     name: Onkyo TX-NR555
     sources: 
+      tv-cd: "TV"
       game: "PS 4"
       network: "Network"
-      strm-box: "Mopidy"
       pc: "PC"
+      
 
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.0.131
+    token: 6e34335171445966504c30594f576738
 
+switch:
+  - platform: command_line
+    switches:
+      dummy_heater:
+        command_on: ""
+        command_off: ""
+        
+  - platform: template
+    switches:
+      disco:
+        value_template: "{{ is_state('disco', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.disco_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.disco_off
+
+climate:
+  - platform: generic_thermostat
+    name: Xiaomi Climate
+    heater: switch.dummy_heater
+    target_sensor: sensor.temperature_158d0001573fb6
+
+weather:
+  - platform: darksky
+    api_key: ef478f7fe98473724dd77342518ff1bf

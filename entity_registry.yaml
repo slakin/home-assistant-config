@@ -1,0 +1,52 @@
+sensor.humidity_158d0001573fb6:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001573fb6
+sensor.temperature_158d0001573fb6:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001573fb6
+sensor.illumination_286c0785aec9:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination286c0785aec9
+light.gateway_light_286c0785aec9:
+  name:
+  platform: xiaomi_aqara
+  unique_id: rgb286c0785aec9
+binary_sensor.switch_158d00016dbfec:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00016dbfec
+binary_sensor.motion_sensor_158d00012652ca:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00012652ca
+binary_sensor.cube_158d0001182dd3:
+  name:
+  platform: xiaomi_aqara
+  unique_id: cube158d0001182dd3
+binary_sensor.switch_158d00012d9f39:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00012d9f39
+binary_sensor.door_window_sensor_158d00012a87e4:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00012a87e4
+switch.plug_158d000128a4e8:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000128a4e8
+media_player.google_home_mini:
+  name: Google Home
+  platform: cast
+  unique_id: 2e419d1a-2481-da8a-e529-c0bd1cd4d92d
+media_player.onkyo:
+  name:
+  platform: cast
+  unique_id: 17643234-8559-e33a-51af-55604de9be78
+media_player.mibox3:
+  name:
+  platform: cast
+  unique_id: 89422e92-dbda-0c22-5235-4162af3c292e
